@@ -1,7 +1,7 @@
 package com.industry.backendcitas;
 
-import com.industry.backendcitas.controllers.services.*;
 import com.industry.backendcitas.models.*;
+import com.industry.backendcitas.services.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +51,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         documentos.add(new TipoDocumento("Pasaporte"));
 
         for (TipoDocumento documento : documentos) {
-            tipoDocumentoService.saveTipoDocumento(documento);
+            tipoDocumentoService.createTipoDocumento(documento);
             LOG.info("Guardando documentos en DB : {}", documento.toString());
         }
 
@@ -64,7 +64,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         personas.add(new Persona("Paciente", "Ejemplo", "email@email.com", 320250071, LocalDate.of(1960, 5, 25), documentos.get(0), 1118215808));
 
         for (Persona persona : personas) {
-            personaService.savePersona(persona);
+            personaService.createPersona(persona);
             LOG.info("Guardando Persona en db : {}", persona.toString());
         }
 
@@ -76,7 +76,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         especialidades.add(new Especialidad("Cardiologìa", "Encargado de atender enfermedades del corazón"));
 
         for (Especialidad especialidad : especialidades) {
-            especialidadService.saveEspecialidad(especialidad);
+            especialidadService.createEspecialidad(especialidad);
             LOG.info("Guardando Especialidades en DB : {}", especialidad.toString());
         }
 
@@ -88,24 +88,24 @@ public class BackendcitasApplication implements CommandLineRunner {
         doctores.add(new Doctores(6258844, especialidades.get(3), personas.get(2)));
 
         for (Doctores doctor : doctores) {
-            doctoresService.saveDoctores(doctor);
+            doctoresService.createDoctor(doctor);
             LOG.info("Guardanod Doctores en DB : {}", doctor.toString());
         }
 
         //--
         Agenda agenda = new Agenda(LocalDate.of(2019, 9, 23), LocalDate.of(2019, 10, 23), Duration.ofMinutes(25), doctores.get(0));
-        agendaService.saveAgenda(agenda);
+        agendaService.createAgenda(agenda);
         Agenda agenda1 = new Agenda(LocalDate.of(2019, 9, 25), LocalDate.of(2019, 10, 23), Duration.ofHours((long) 1.25), doctores.get(1));
-        agendaService.saveAgenda(agenda1);
+        agendaService.createAgenda(agenda1);
         Agenda agenda2 = new Agenda(LocalDate.of(2019, 9, 30), LocalDate.of(2019, 10, 23), Duration.ofMinutes(30), doctores.get(2));
-        agendaService.saveAgenda(agenda2);
+        agendaService.createAgenda(agenda2);
         LOG.info("guardando agenda en DB : {}", agenda.toString());
         LOG.info("guardando agenda1 en DB : {}", agenda1.toString());
         LOG.info("guardando agenda2 en DB : {}", agenda2.toString());
 
         //--
         Cita cita = new Cita(LocalDate.of(2019,10,1), "Cita con especialista en Dermatología", LocalTime.of(8,30), doctores.get(0), personas.get(4));
-        citaService.saveCita(cita);
+        citaService.createCita(cita);
         LOG.info("Guardando Cita en DB : {}", cita.toString());
     }
 

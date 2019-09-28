@@ -1,4 +1,4 @@
-package com.industry.backendcitas.controllers.repository;
+package com.industry.backendcitas.repository;
 
 import com.industry.backendcitas.models.Especialidad;
 import org.springframework.data.jpa.repository.JpaRepository;
