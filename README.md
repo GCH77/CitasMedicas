@@ -9,53 +9,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Como pre-requisitos necesitas tener instalado el JDK 1.8 y JRE 1.8 de Java, Maven, Apache Tommcat EE y PostgresSQL.
+Tambien sera necesario, tener instalado Node JS y la Angular CLI. Para comprobar ejecuta los siguientes comandos:
 
 ```
-Give examples
+java -version
+mvn -version
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Para instalar el proyecto debe clonar el repositorio, y dentro de la carpeta de frontendcitas ejecutar:
 ```
-Give the example
+npm install O yarn install
 ```
-
-And repeat
-
+Dentro de la carpeta de backendcitas, abrirlo con tu editor IntelliJ y el automaticamente sincronizara las dependencias del proyecto.
+Una vez hecho estas cosas, debes ejecutar el backend y en el frontend ng serve. Luego estaran corriendo en los siguientes puertos:
 ```
-until finished
+localhost:8080 --> Server
+localhost:4200 --> Client
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
