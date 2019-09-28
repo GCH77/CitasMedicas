@@ -20,7 +20,14 @@ Para instalar el proyecto debe clonar el repositorio, y dentro de la carpeta de 
 npm install O yarn install
 ```
 Dentro de la carpeta de backendcitas, abrirlo con tu editor IntelliJ y el automaticamente sincronizara las dependencias del proyecto; tambien en la carpeta /resources/ debes crear un nuevo archivo (file) con el nombre application.yml donde ira las credenciales para la
-conexion a la Base de Datos. Una vez hecho estas cosas, debes ejecutar el backend y en el frontend ng serve. Luego estaran corriendo en los siguientes puertos:
+conexion a la Base de Datos
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/nameDatabase
+spring.datasource.username=username
+spring.datasource.password=password
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+Una vez hecho estas cosas, debes ejecutar el backend y en el frontend ng serve. Luego estaran corriendo en los siguientes puertos:
 ```
 localhost:8080 --> Server
 localhost:4200 --> Client
