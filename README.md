@@ -3,10 +3,6 @@
 CitasMedicas es un proyecto educativo que esta compuesta de dos partes, una de cliente que le permite registrarse, agendar citas, editar la cita.
 Luego consta de una parte administrativa que gestiona los horarios y la disponibilidad de los doctores, asi como su registro en el sistema.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 Como pre-requisitos necesitas tener instalado el JDK 1.8 y JRE 1.8 de Java, Maven, Apache Tommcat EE y PostgresSQL.
@@ -23,8 +19,8 @@ Para instalar el proyecto debe clonar el repositorio, y dentro de la carpeta de 
 ```
 npm install O yarn install
 ```
-Dentro de la carpeta de backendcitas, abrirlo con tu editor IntelliJ y el automaticamente sincronizara las dependencias del proyecto.
-Una vez hecho estas cosas, debes ejecutar el backend y en el frontend ng serve. Luego estaran corriendo en los siguientes puertos:
+Dentro de la carpeta de backendcitas, abrirlo con tu editor IntelliJ y el automaticamente sincronizara las dependencias del proyecto; tambien en la carpeta /resources/ debes crear un nuevo archivo (file) con el nombre application.yml donde ira las credenciales para la
+conexion a la Base de Datos. Una vez hecho estas cosas, debes ejecutar el backend y en el frontend ng serve. Luego estaran corriendo en los siguientes puertos:
 ```
 localhost:8080 --> Server
 localhost:4200 --> Client
