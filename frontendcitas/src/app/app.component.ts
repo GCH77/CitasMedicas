@@ -2,9 +2,19 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <app-header></app-header>
+
+    <app-home></app-home>
+
+    <app-agenda></app-agenda>
+
+    <router-outlet></router-outlet>
+
+    <app-footer></app-footer>
+  `,
+  styles: []
 })
 export class AppComponent {
-  title = 'frontendcitas';
+  title = 'my-first-app';
 }

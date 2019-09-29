@@ -21,6 +21,9 @@ public class Agenda extends AuditModel{
     @JoinColumn(name = "id_doctor", nullable = false)
     private Doctores id_doctor;
 
+    public Agenda() {
+    }
+
     public Agenda(LocalDate fecha_inicio, LocalDate fecha_fin, Duration duracion_cita, Doctores id_doctor) {
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;

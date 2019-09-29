@@ -1,0 +1,50 @@
+<section class="hero is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Agenda de doctores - Disponibilidad
+      </h1>
+      <h2 class="subtitle">
+        Ajusta tu horario segun tu disponibilidad
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <form (ngSubmit)="searchDoctor()" #formSearch="ngForm">
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <label class="label">Tipo de documento</label>
+            <div class="control has-icons-left">
+              <div class="select is-primary">
+                <select name="tipoDocumento" [(ngModel)]="tipoDocumento" required>
+                  <option *ngFor="let tipo of tiposDocumentosList | async" [value]="tipo.id">{{ tipo.tipo }}</option>
+                </select>
+              </div>
+              <span class="icon is-left">
+                <fa-icon [icon]="faFingerprint"></fa-icon>
+              </span>
+            </div>
+          </div>
+          <div class="field is-primary">
+            <label class="label">Numero de documento</label>
+            <div class="control">
+              <input class="input" name="numeroDocumento" [(ngModel)]="numeroDocumento" type="text" placeholder="0011223344" required>
+            </div>
+          </div>
+          <div class="field-body">
+            <div class="field is-padding-top">
+              <div class="control">
+                <button class="button is-success" type="submit" [disabled]="!formSearch.form.valid">
+                  <fa-icon [icon]="faSearch"></fa-icon>Buscar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

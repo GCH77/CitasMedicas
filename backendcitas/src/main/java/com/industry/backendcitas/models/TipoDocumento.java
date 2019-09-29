@@ -22,6 +22,9 @@ public class TipoDocumento extends AuditModel{
     )
     private Set<Persona> personas = new HashSet<>();
 
+    public TipoDocumento() {
+    }
+
     public TipoDocumento(String tipo) { this.tipo = tipo; }
 
     public int getId() {

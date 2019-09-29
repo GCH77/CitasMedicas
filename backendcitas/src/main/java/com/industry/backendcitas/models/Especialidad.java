@@ -23,6 +23,9 @@ public class Especialidad extends AuditModel{
     )
     private Set<Doctores> doctores = new HashSet<>();
 
+    public Especialidad() {
+    }
+
     public Especialidad(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

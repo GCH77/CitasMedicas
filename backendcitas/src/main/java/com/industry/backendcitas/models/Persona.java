@@ -38,6 +38,9 @@ public class Persona extends AuditModel{
     )
     private Set<Cita> cita = new HashSet<>();
 
+    public Persona() {
+    }
+
     public Persona(String nombre, String apellido, String email, Integer telefono, LocalDate fecha_nacimiento, TipoDocumento id_tipo_documento, Integer numero_documento) {
         this.nombre = nombre;
         this.apellido = apellido;

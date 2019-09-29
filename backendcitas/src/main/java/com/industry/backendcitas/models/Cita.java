@@ -24,6 +24,9 @@ public class Cita extends AuditModel{
     @JoinColumn(name = "id_persona", nullable = false)
     private Persona id_persona;
 
+    public Cita() {
+    }
+
     public Cita(LocalDate fecha_cita, String tipo_cita, LocalTime hora_cita, Doctores id_doctor, Persona id_persona) {
         this.fecha_cita = fecha_cita;
         this.tipo_cita = tipo_cita;

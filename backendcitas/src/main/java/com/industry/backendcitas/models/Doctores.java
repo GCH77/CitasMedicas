@@ -36,6 +36,9 @@ public class Doctores extends AuditModel{
     )
     private Set<Cita> cita = new HashSet<>();
 
+    public Doctores() {
+    }
+
     public Doctores(int numero_tarjeta_profesional, Especialidad id_especialidad, Persona id_persona) {
         this.numero_tarjeta_profesional = numero_tarjeta_profesional;
         this.id_especialidad = id_especialidad;
