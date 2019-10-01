@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/center")
-public class TiposDocumentos {
+public class TiposDocumentosController {
     @Autowired
     private TipoDocumentoService tipoDocumentoService;
 

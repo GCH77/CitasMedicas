@@ -1,7 +1,6 @@
 package com.industry.backendcitas.models;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.LocalDate;
 
 
@@ -15,7 +14,7 @@ public class Agenda extends AuditModel{
     private int id;
     private LocalDate fecha_inicio;
     private LocalDate fecha_fin;
-    private Duration duracion_cita;
+    private int duracion_cita;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_doctor", nullable = false)
@@ -24,7 +23,7 @@ public class Agenda extends AuditModel{
     public Agenda() {
     }
 
-    public Agenda(LocalDate fecha_inicio, LocalDate fecha_fin, Duration duracion_cita, Doctores id_doctor) {
+    public Agenda(LocalDate fecha_inicio, LocalDate fecha_fin, int duracion_cita, Doctores id_doctor) {
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.duracion_cita = duracion_cita;
@@ -55,11 +54,11 @@ public class Agenda extends AuditModel{
         this.fecha_fin = fecha_fin;
     }
 
-    public Duration getDuracion_cita() {
+    public int getDuracion_cita() {
         return duracion_cita;
     }
 
-    public void setDuracion_cita(Duration duracion_cita) {
+    public void setDuracion_cita(int duracion_cita) {
         this.duracion_cita = duracion_cita;
     }
 
@@ -77,7 +76,7 @@ public class Agenda extends AuditModel{
                 "id=" + id +
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_fin=" + fecha_fin +
-                ", duracion_cita=" + duracion_cita.toMinutes() +
+                ", duracion_cita=" + duracion_cita +
                 ", id_doctor=" + id_doctor +
                 '}';
     }

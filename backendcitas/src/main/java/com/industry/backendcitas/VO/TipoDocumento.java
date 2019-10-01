@@ -1,12 +1,14 @@
 package com.industry.backendcitas.VO;
 
+import com.industry.backendcitas.models.Persona;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class TipoDocumento {
     private int id;
     private String tipo;
-    private Set<PersonaVO> personaVOS = new HashSet<>();
+    private Set<Persona> personaVO = new HashSet<>();
 
     public TipoDocumento(String tipo) {
         this.tipo = tipo;
