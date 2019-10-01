@@ -10,7 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -93,11 +92,11 @@ public class BackendcitasApplication implements CommandLineRunner {
         }
 
         //--
-        Agenda agenda = new Agenda(LocalDate.of(2019, 9, 23), LocalDate.of(2019, 10, 23), LocalTime.now(), doctores.get(0));
+        Agenda agenda = new Agenda(LocalDate.of(2019, 9, 23), LocalDate.of(2019, 10, 23), 15, doctores.get(0));
         agendaService.createAgenda(agenda);
-        Agenda agenda1 = new Agenda(LocalDate.of(2019, 9, 25), LocalDate.of(2019, 10, 23), LocalTime.now(), doctores.get(1));
+        Agenda agenda1 = new Agenda(LocalDate.of(2019, 9, 25), LocalDate.of(2019, 10, 23), 25, doctores.get(1));
         agendaService.createAgenda(agenda1);
-        Agenda agenda2 = new Agenda(LocalDate.of(2019, 9, 30), LocalDate.of(2019, 10, 23), LocalTime.now(), doctores.get(2));
+        Agenda agenda2 = new Agenda(LocalDate.of(2019, 9, 30), LocalDate.of(2019, 10, 23), 30, doctores.get(2));
         agendaService.createAgenda(agenda2);
         LOG.info("guardando agenda en DB : {}", agenda.toString());
         LOG.info("guardando agenda1 en DB : {}", agenda1.toString());

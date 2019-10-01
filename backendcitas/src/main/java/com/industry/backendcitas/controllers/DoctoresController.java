@@ -25,4 +25,6 @@ public class DoctoresController {
     public Doctores getDoctorByIdentificacion(@PathVariable String tipo, @PathVariable String identificacion){
         return doctoresService.findByIdentificacion(Integer.parseInt(tipo), identificacion);
     }
+
+
 }

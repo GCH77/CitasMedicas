@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { DoctorService } from '../services/doctor.service';
 import { Agenda } from '../models/Agenda';
 import { AgendaService } from '../services/agenda.service';
+import { Doctor } from '../models/Doctor';
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
@@ -24,13 +25,15 @@ export class AgendaComponent implements OnInit {
   //data
   showBar: boolean;
   tiposDocumentosList: Observable<any>;
-  doctor: Observable<any>
+  doctor: Doctor;
   
   constructor(
     private tiposDocumentosService: TipoDocumentoService,
     private doctorService: DoctorService,
     private agendaService: AgendaService
-    ) { }
+    ) { 
+      this.agendaDoctor.duracion_cita = 30;
+    }
 
   ngOnInit() {
     this.getTiposDocumentos();
@@ -50,7 +53,9 @@ export class AgendaComponent implements OnInit {
   }
 
   saveDisponibilidad(){
-    this.agendaService.saveAgendaDoctor(this.agendaDoctor);
+    this.agendaDoctor.id_doctor = this.doctor;
+    this.agendaService.saveAgendaDoctor(this.agendaDoctor)
+      .subscribe(res => console.log(res), error => console.log(error));
   }
 
   getTiposDocumentos() {

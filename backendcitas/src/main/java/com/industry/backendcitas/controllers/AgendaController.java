@@ -19,9 +19,6 @@ public class AgendaController {
 
     @PostMapping("/agenda")
     public ResponseEntity<Agenda> createAgenda(@RequestBody AgendaVO agendaVO){
-        System.out.println("************************************************");
-        System.out.println(agendaVO);
-        System.out.println("************************************************");
         Agenda agendaVO1 = new Agenda();
         agendaVO1.setFecha_fin(agendaVO.getFecha_fin());
         agendaVO1.setFecha_inicio(agendaVO.getFecha_inicio());
