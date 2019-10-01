@@ -24,6 +24,8 @@ export class AgendaComponent implements OnInit {
 
   //data
   showBar: boolean;
+  showSuccess: boolean;
+  showDanger: boolean;
   tiposDocumentosList: Observable<any>;
   doctor: Doctor;
   
@@ -32,6 +34,8 @@ export class AgendaComponent implements OnInit {
     private doctorService: DoctorService,
     private agendaService: AgendaService
     ) { 
+      this.showSuccess = false;
+      this.showDanger = false;
       this.agendaDoctor.duracion_cita = 30;
     }
 
@@ -55,11 +59,39 @@ export class AgendaComponent implements OnInit {
   saveDisponibilidad(){
     this.agendaDoctor.id_doctor = this.doctor;
     this.agendaService.saveAgendaDoctor(this.agendaDoctor)
-      .subscribe(res => console.log(res), error => console.log(error));
+      .subscribe(res => {
+        if (res.hasOwnProperty('id')) {
+          this.resetValues();
+          this.dismissSuccess();
+          setTimeout(() => {
+            this.dismissSuccess();
+          }, 2000);
+        }else{
+          this.resetValues();
+          this.dismissDanger();
+          setTimeout(() => {
+            this.dismissDanger();
+          }, 2000);
+        }
+      });
   }
 
   getTiposDocumentos() {
     this.tiposDocumentosList = this.tiposDocumentosService.getTiposDocumentos();
+  }
+
+  dismissSuccess(){
+    this.showSuccess = !this.showSuccess;
+  }
+
+  dismissDanger(){
+    this.showDanger = !this.showDanger;
+  }
+
+  resetValues(){
+    this.tipoDocumento = null;
+    this.numeroDocumento = null;
+    this.doctor = null;
   }
 
 }

@@ -11,23 +11,27 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AgendaComponent } from './agenda/agenda.component';
+import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    AgendaComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      FooterComponent,
+      HomeComponent,
+      AgendaComponent,
+      PageNotFoundComponent
+   ],
+   imports: [
+      BrowserModule,
+      FormsModule,
+      AppRoutingModule,
+      FontAwesomeModule,
+      HttpClientModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
