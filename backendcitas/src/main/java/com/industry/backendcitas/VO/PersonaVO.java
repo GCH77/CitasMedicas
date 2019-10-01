@@ -1,5 +1,8 @@
 package com.industry.backendcitas.VO;
 
+import com.industry.backendcitas.models.Cita;
+import com.industry.backendcitas.models.Doctores;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,17 +12,17 @@ public class PersonaVO {
     private String nombre;
     private String apellido;
     private String email;
-    private Integer telefono;
+    private String telefono;
     private LocalDate fecha_nacimiento;
     private TipoDocumento id_tipo_documento;
-    private Integer numero_documento;
-    private Set<DoctoresVO> doctores = new HashSet<>();
-    private Set<CitaVO> cita = new HashSet<>();
+    private String numero_documento;
+    private Set<Doctores> doctores = new HashSet<>();
+    private Set<Cita> cita = new HashSet<>();
 
     public PersonaVO() {
     }
 
-    public PersonaVO(String nombre, String apellido, String email, Integer telefono, LocalDate fecha_nacimiento, TipoDocumento id_tipo_documento, Integer numero_documento) {
+    public PersonaVO(String nombre, String apellido, String email, String telefono, LocalDate fecha_nacimiento, TipoDocumento id_tipo_documento, String numero_documento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -61,11 +64,11 @@ public class PersonaVO {
         this.email = email;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -85,11 +88,11 @@ public class PersonaVO {
         this.id_tipo_documento = id_tipo_documento;
     }
 
-    public Integer getNumero_documento() {
+    public String getNumero_documento() {
         return numero_documento;
     }
 
-    public void setNumero_documento(Integer numero_documento) {
+    public void setNumero_documento(String numero_documento) {
         this.numero_documento = numero_documento;
     }
 

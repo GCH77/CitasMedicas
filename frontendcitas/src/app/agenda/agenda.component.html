@@ -10,9 +10,10 @@
     </div>
   </div>
 </section>
+<progress *ngIf="showBar" class="progress is-small is-info" max="100">30%</progress>
 <section class="section">
   <div class="container">
-    <form (ngSubmit)="searchDoctor()" #formSearch="ngForm">
+    <form (ngSubmit)="searchDoctor()" #formSearch="ngForm" method="GET">
       <div class="field is-horizontal">
         <div class="field-body">
           <div class="field">
@@ -31,20 +32,101 @@
           <div class="field is-primary">
             <label class="label">Numero de documento</label>
             <div class="control">
-              <input class="input" name="numeroDocumento" [(ngModel)]="numeroDocumento" type="text" placeholder="0011223344" required>
+              <input class="input" name="numeroDocumento" [(ngModel)]="numeroDocumento" type="text" required>
             </div>
           </div>
-          <div class="field-body">
-            <div class="field is-padding-top">
-              <div class="control">
-                <button class="button is-success" type="submit" [disabled]="!formSearch.form.valid">
-                  <fa-icon [icon]="faSearch"></fa-icon>Buscar
-                </button>
-              </div>
+          <div class="field is-padding-top">
+            <div class="control">
+              <button class="button is-success" type="submit" [disabled]="!formSearch.form.valid">
+                <fa-icon [icon]="faSearch"></fa-icon>Buscar
+              </button>
             </div>
           </div>
         </div>
       </div>
     </form>
+    <section class="section" *ngIf="doctor == ''">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="subtitle is-6">No se encontro ningun registro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- Info card -->
+    <section class="section" *ngIf="doctor">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="assets/user.png" alt="Usuario">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">Dr. {{ doctor.id_persona.nombre }} {{ doctor.id_persona.apellido }}</p>
+              <p class="subtitle is-6">
+                {{ doctor.id_especialidad.nombre }} <br>
+                {{ doctor.id_persona.id_tipo_documento.tipo }}. {{ doctor.id_persona.numero_documento }} <br>
+                {{ doctor.id_persona.email }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article class="message is-info">
+        <div class="message-body">
+          <strong>Nota.</strong> Indica la fecha de inicio a partir de la que el doctor estara disponible, y la fecha
+          final donde conluye su periodo disponible. El tiempo de duracion de la cita, unicamente sera valido para las
+          citas dentro del rango de fechas.
+        </div>
+      </article>
+      <form (ngSubmit)="saveDisponibilidad()" #formSaveDispo="ngForm" method="POST">
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <label class="label">Fecha de Inicio</label>
+              <div class="control">
+                <input class="input" [(ngModel)]="agendaDoctor.fecha_inicio" name="fecha_inicio" type="date" placeholder="dd/mm/yyyy" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Fecha de Cierre</label>
+              <div class="control">
+                <input class="input" [(ngModel)]="agendaDoctor.fecha_fin" name="fecha_fin" type="date" placeholder="dd/mm/yyyy" required>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <label class="label">Duracion de citas</label>
+              <div class="control">
+                <input id="rangeTime" class="slider is-fullwidth is-info" [(ngModel)]="agendaDoctor.duracion_cita" name="duracion_cita" step="1" min="1" max="60" type="range">
+                <div class="tags has-addons">
+                  <span class="tag">Minutos</span>
+                  <span class="tag is-primary">{{ agendaDoctor.duracion_cita }}</span>
+                </div>
+                <!-- <input class="input" [(ngModel)]="agendaDoctor.duracion_cita" name="duracion_cita" type="time" value="00:00" required> -->
+              </div>
+            </div>
+            <div class="field is-padding-top">
+              <div class="control">
+                <button class="button is-success" type="submit" [disabled]="!formSaveDispo.form.valid">
+                  <fa-icon [icon]="faSave"></fa-icon>Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
   </div>
 </section>

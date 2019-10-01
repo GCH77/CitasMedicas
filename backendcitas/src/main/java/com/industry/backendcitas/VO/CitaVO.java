@@ -1,5 +1,8 @@
 package com.industry.backendcitas.VO;
 
+import com.industry.backendcitas.models.Doctores;
+import com.industry.backendcitas.models.Persona;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -8,13 +11,13 @@ public class CitaVO {
     private LocalDate fecha_cita;
     private String tipo_cita;
     private LocalTime hora_cita;
-    private DoctoresVO id_doctor;
-    private PersonaVO id_personaVO;
+    private Doctores id_doctor;
+    private Persona id_personaVO;
 
     public CitaVO() {
     }
 
-    public CitaVO(LocalDate fecha_cita, String tipo_cita, LocalTime hora_cita, DoctoresVO id_doctor, PersonaVO id_personaVO) {
+    public CitaVO(LocalDate fecha_cita, String tipo_cita, LocalTime hora_cita, Doctores id_doctor, Persona id_personaVO) {
         this.fecha_cita = fecha_cita;
         this.tipo_cita = tipo_cita;
         this.hora_cita = hora_cita;
@@ -54,19 +57,19 @@ public class CitaVO {
         this.hora_cita = hora_cita;
     }
 
-    public DoctoresVO getId_doctor() {
+    public Doctores getId_doctor() {
         return id_doctor;
     }
 
-    public void setId_doctor(DoctoresVO id_doctor) {
+    public void setId_doctor(Doctores id_doctor) {
         this.id_doctor = id_doctor;
     }
 
-    public PersonaVO getId_personaVO() {
+    public Persona getId_personaVO() {
         return id_personaVO;
     }
 
-    public void setId_personaVO(PersonaVO id_personaVO) {
+    public void setId_personaVO(Persona id_personaVO) {
         this.id_personaVO = id_personaVO;
     }
 

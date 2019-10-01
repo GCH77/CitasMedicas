@@ -1,5 +1,7 @@
 package com.industry.backendcitas.VO;
 
+import com.industry.backendcitas.models.Doctores;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ public class EspecialidadVO {
     private int id;
     private String nombre;
     private String descripcion;
-    private Set<DoctoresVO> doctores = new HashSet<>();
+    private Set<Doctores> doctores = new HashSet<>();
 
     public EspecialidadVO() {
     }

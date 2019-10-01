@@ -1,20 +1,25 @@
 package com.industry.backendcitas.VO;
 
+import com.industry.backendcitas.models.Agenda;
+import com.industry.backendcitas.models.Cita;
+import com.industry.backendcitas.models.Especialidad;
+import com.industry.backendcitas.models.Persona;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class DoctoresVO {
     private int id;
     private int numero_tarjeta_profesional;
-    private EspecialidadVO id_especialidad;
-    private PersonaVO id_personaVO;
-    private Set<AgendaVO> agenda = new HashSet<>();
-    private Set<CitaVO> cita = new HashSet<>();
+    private Especialidad id_especialidad;
+    private Persona id_personaVO;
+    private Set<Agenda> agenda = new HashSet<>();
+    private Set<Cita> cita = new HashSet<>();
 
     public DoctoresVO() {
     }
 
-    public DoctoresVO(int numero_tarjeta_profesional, EspecialidadVO id_especialidad, PersonaVO id_personaVO) {
+    public DoctoresVO(int numero_tarjeta_profesional, Especialidad id_especialidad, Persona id_personaVO) {
         this.numero_tarjeta_profesional = numero_tarjeta_profesional;
         this.id_especialidad = id_especialidad;
         this.id_personaVO = id_personaVO;
@@ -36,19 +41,19 @@ public class DoctoresVO {
         this.numero_tarjeta_profesional = numero_tarjeta_profesional;
     }
 
-    public EspecialidadVO getId_especialidad() {
+    public Especialidad getId_especialidad() {
         return id_especialidad;
     }
 
-    public void setId_especialidad(EspecialidadVO id_especialidad) {
+    public void setId_especialidad(Especialidad id_especialidad) {
         this.id_especialidad = id_especialidad;
     }
 
-    public PersonaVO getId_personaVO() {
+    public Persona getId_personaVO() {
         return id_personaVO;
     }
 
-    public void setId_personaVO(PersonaVO id_personaVO) {
+    public void setId_personaVO(Persona id_personaVO) {
         this.id_personaVO = id_personaVO;
     }
 

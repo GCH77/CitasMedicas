@@ -29,4 +29,8 @@ public class DoctoresService {
     public void deleteDoctor(int idDoctor) {
         this.doctoresRepository.deleteById(idDoctor);
     }
+
+    public Doctores findByIdentificacion(int tipo, String identificacion){
+        return this.doctoresRepository.findByIdentificacion(tipo, identificacion);
+    }
 }

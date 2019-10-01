@@ -16,13 +16,13 @@ public class Persona extends AuditModel{
     private String nombre;
     private String apellido;
     private String email;
-    private Integer telefono;
+    private String telefono;
     private LocalDate fecha_nacimiento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_documento", nullable = false)
     private TipoDocumento id_tipo_documento;
-    private Integer numero_documento;
+    private String numero_documento;
 
     @OneToMany(
             cascade = CascadeType.ALL,
@@ -41,7 +41,7 @@ public class Persona extends AuditModel{
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, String email, Integer telefono, LocalDate fecha_nacimiento, TipoDocumento id_tipo_documento, Integer numero_documento) {
+    public Persona(String nombre, String apellido, String email, String telefono, LocalDate fecha_nacimiento, TipoDocumento id_tipo_documento, String numero_documento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -83,11 +83,11 @@ public class Persona extends AuditModel{
         this.email = email;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -107,11 +107,11 @@ public class Persona extends AuditModel{
         this.id_tipo_documento = id_tipo_documento;
     }
 
-    public Integer getNumero_documento() {
+    public String getNumero_documento() {
         return numero_documento;
     }
 
-    public void setNumero_documento(Integer numero_documento) {
+    public void setNumero_documento(String numero_documento) {
         this.numero_documento = numero_documento;
     }
 
