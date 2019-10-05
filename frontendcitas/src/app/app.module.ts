@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
+import { DoctorComponent } from './doctor/doctor.component';
 
 @NgModule({
    declarations: [
@@ -20,7 +21,8 @@ import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
       FooterComponent,
       HomeComponent,
       AgendaComponent,
-      PageNotFoundComponent
+      PageNotFoundComponent,
+      DoctorComponent
    ],
    imports: [
       BrowserModule,
