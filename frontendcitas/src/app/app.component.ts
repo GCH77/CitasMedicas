@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 
     <app-agenda></app-agenda>
 
+    <app-doctor></app-doctor>
+    
     <router-outlet></router-outlet>
 
     <app-footer></app-footer>

@@ -4,9 +4,9 @@ export class Persona {
   id: number;
   apellido: string;
   email: string;
-  fechaNacimiento: Date;
+  fecha_nacimiento: Date;
   nombre: string;
-  numeroDocumento: string;
+  numero_documento: string;
   telefono: string;
-  idTipoDocumento: TipoDocumento;
+  id_tipo_documento: TipoDocumento;
 }

@@ -1,0 +1,134 @@
+<section class="hero is-dark is-bold">
+	<div class="hero-body">
+		<div class="container">
+			<h1 class="title">
+				Formulario de Creación de doctores
+			</h1>
+			<h2 class="subtitle">
+				Por favor complete la información solicitada
+			</h2>
+		</div>
+	</div>
+</section>
+<section class="section">
+	<div class="container">
+		<form (ngSubmit)="saveDoctor()" #FormSaveDoc="ngForm" method="POST">
+			<div class="box">
+				<div class="field is-horizontal is-grouped is-grouped-centered">
+					<div class="field-body">
+						<div class="field">
+							<label class="label">Tipo de Documento:</label>
+							<div class="control has-icons-left">
+								<div class="select is-primary">
+									<select name="tipoDocumento" [(ngModel)]="tipoDocumento.id" required>
+										<option *ngFor="let tipo of tiposDocumentosList | async" [value]="tipo.id">
+											{{ tipo.tipo }}</option>
+									</select>
+								</div>
+								<span class="icon is-left">
+									<fa-icon [icon]="faIdCard"></fa-icon>
+								</span>
+							</div>
+						</div>
+						<div class="field is-primary">
+							<label class="label">Numero de documento</label>
+							<div class="control">
+								<input class="input" name="numeroDocumento" [(ngModel)]="personaDoctor.numero_documento" type="text"
+									required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-body">
+						<div class="field is-primary">
+							<label class="label">Nombres</label>
+							<div class="control">
+								<input class="input" name="nombre" [(ngModel)]="personaDoctor.nombre" type="text" required>
+							</div>
+						</div>
+						<div class="field is-primary">
+							<label class="label">Apellidos</label>
+							<div class="control">
+								<input class="input" name="apellido" [(ngModel)]="personaDoctor.apellido" type="text" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-body">
+						<div class="field is-primary">
+							<label class="label">Teléfono</label>
+							<div class="control">
+								<input class="input" name="telefono" [(ngModel)]="personaDoctor.telefono" type="text" required>
+							</div>
+						</div>
+						<div class="field is-primary">
+							<label class="label">Correo electrónico</label>
+							<div class="control">
+								<input class="input" name="email" [(ngModel)]="personaDoctor.email" type="text" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-body">
+						<div class="field">
+							<label class="label">Fecha de nacimiento</label>
+							<div class="control">
+								<input class="input" [(ngModel)]="personaDoctor.fecha_nacimiento" name="fechaNacimiento" type="date"
+									placeholder="dd/mm/yyyy" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="box">
+					<div class="field is-horizontal">
+						<div class="field-body">
+							<div class="field">
+								<label class="label">Especialidad</label>
+								<div class="control has-icons-left">
+									<div class="select is-primary">
+										<select name="especialidadDoctor" [(ngModel)]="doctor.id_especialidad" required>
+											<option *ngFor="let especialidad of especialidadList | async" [value]="especialidad.id">
+												{{ especialidad.nombre }}</option>
+										</select>
+									</div>
+									<span class="icon is-left">
+										<fa-icon [icon]="faStethoscope"></fa-icon>
+									</span>
+								</div>
+							</div>
+							<div class="field is-primary">
+								<label class="label">Numero de tarjeta profesional</label>
+								<div class="control">
+									<input class="input" name="numero_tarjeta_profesional" [(ngModel)]="doctor.numero_tarjeta_profesional"
+										type="text" required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="control">
+						<button class="button is-success" type="submit">
+							Aceptar
+						</button>
+					</div>
+				</div>
+
+			</div>
+			<div class="field is-horizontal">
+				<div class="field-label">
+					<!-- Left empty for spacing -->
+				</div>
+
+			</div>
+		</form>
+	</div>
+</section>

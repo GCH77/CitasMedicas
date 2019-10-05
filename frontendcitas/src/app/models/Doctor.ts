@@ -3,7 +3,7 @@ import { Persona } from './Persona';
 
 export class Doctor {
   id: number;
-  numeroTarjetaProfesional: string;
-  idEspecialidad: Especialidad;
-  idPersona: Persona;
+  numero_tarjeta_profesional: string;
+  id_especialidad: number;
+  id_persona: Persona;
 }

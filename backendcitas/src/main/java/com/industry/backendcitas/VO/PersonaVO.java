@@ -2,6 +2,7 @@ package com.industry.backendcitas.VO;
 
 import com.industry.backendcitas.models.Cita;
 import com.industry.backendcitas.models.Doctores;
+import com.industry.backendcitas.models.TipoDocumento;
 
 import java.time.LocalDate;
 import java.util.HashSet;
