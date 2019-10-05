@@ -29,4 +29,8 @@ public class PersonaService {
     public void deletePersona(int idPersona) {
         this.personaRepository.deleteById(idPersona);
     }
+
+    public Persona findPersonaByIdentificacion(int tipo, String identificacion){
+        return this.personaRepository.findPersonaByIdentificacion(tipo, identificacion);
+    }
 }

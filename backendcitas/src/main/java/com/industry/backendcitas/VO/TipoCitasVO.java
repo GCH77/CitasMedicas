@@ -1,17 +1,18 @@
 package com.industry.backendcitas.VO;
 
-import com.industry.backendcitas.models.Persona;
+import javax.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class TipoDocumento {
+public class TipoCitasVO {
     private int id;
     private String tipo;
-    private Set<Persona> personaVO = new HashSet<>();
+    private String descripcion;
 
-    public TipoDocumento(String tipo) {
+    public TipoCitasVO() {
+    }
+
+    public TipoCitasVO(String tipo, String descripcion) {
         this.tipo = tipo;
+        this.descripcion = descripcion;
     }
 
     public int getId() {
@@ -30,13 +31,20 @@ public class TipoDocumento {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
-        return "TipoDocumento{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                '}';
+    public String getDescripcion() {
+        return descripcion;
     }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
+    @Override
+    public String toString() {
+        return "TipoCitas{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
 }

@@ -38,11 +38,25 @@ public class BackendcitasApplication implements CommandLineRunner {
     @Autowired
     CitaService citaService;
 
+    @Autowired
+    TipoCitasService tipoCitasService;
+
     public static void main(String[] args) {
         SpringApplication.run(BackendcitasApplication.class, args);
     }
     @Override
     public void run(String... args) throws Exception {
+
+        List<TipoCitas> tipoCitas = new ArrayList<>();
+        tipoCitas.add(new TipoCitas("MG", "Medicina general"));
+        tipoCitas.add(new TipoCitas("CMP", "Consulta medica prioritaria"));
+        tipoCitas.add(new TipoCitas("AU", "Atencion de urgencias"));
+        tipoCitas.add(new TipoCitas("CME", "Consulta medica especializada"));
+
+        for (TipoCitas tipo : tipoCitas) {
+            tipoCitasService.createTipoCita(tipo);
+            LOG.info("Guardando documentos en DB : {}", tipo.toString());
+        }
 
         List<TipoDocumento> documentos = new ArrayList<>();
         documentos.add(new TipoDocumento("Cedula"));
