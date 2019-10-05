@@ -21,28 +21,9 @@ public class PersonasController {
         return personaService.readPersonas();
     }
 
-<<<<<<< HEAD
-    @GetMapping("/persona/{tipo}/{identificacion}")
-    public Persona findPersonaByIdentification(@PathVariable String tipo, @PathVariable String identificacion){
-        return personaService.findPersonaByIdentificacion(Integer.parseInt(tipo), identificacion);
-    }
 
-    @PostMapping("/persona")
-    public ResponseEntity<Persona> createPersona(@RequestBody PersonaVO personaVO){
-        Persona persona = new Persona();
-        persona.setNombre(personaVO.getNombre());
-        persona.setApellido(personaVO.getApellido());
-        persona.setEmail(personaVO.getEmail());
-        persona.setTelefono(personaVO.getTelefono());
-        persona.setFecha_nacimiento(personaVO.getFecha_nacimiento());
-        persona.setId_tipo_documento(personaVO.getId_tipo_documento());
-        persona.setNumero_documento(personaVO.getNumero_documento());
-
-        return new ResponseEntity<>(personaService.createPersona(persona), HttpStatus.CREATED);
-    }
-=======
     @PostMapping("/personas")
-    public ResponseEntity<Persona> createPersona(@RequestBody PersonaVO personaVO){
+    public ResponseEntity<Persona> createPersona(@RequestBody PersonaVO personaVO) {
         Persona personaVO1 = new Persona();
         personaVO1.setNombre(personaVO.getNombre());
         personaVO1.setApellido(personaVO.getApellido());
@@ -55,5 +36,4 @@ public class PersonasController {
         return new ResponseEntity<>(personaService.createPersona(personaVO1), HttpStatus.CREATED);
     }
 
->>>>>>> origin/Jhon
 }

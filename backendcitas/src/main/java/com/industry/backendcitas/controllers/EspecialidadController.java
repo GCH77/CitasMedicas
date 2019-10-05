@@ -16,5 +16,7 @@ public class EspecialidadController {
     private EspecialidadService especialidadService;
 
     @GetMapping("/especialidad-list")
-    public List<Especialidad> getEspecialidad() { return this.especialidadService.readEspecialidades();}
+    public List<Especialidad> getEspecialidad() {
+        return this.especialidadService.readEspecialidades();
+    }
 }

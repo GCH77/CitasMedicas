@@ -27,7 +27,7 @@ public class DoctoresController {
     }
 
     @PostMapping("/doctores")
-    public ResponseEntity<Doctores> createDoctor(@RequestBody DoctoresVO doctoresVO){
+    public ResponseEntity<Doctores> createDoctor(@RequestBody DoctoresVO doctoresVO) {
         Doctores doctoresVO1 = new Doctores();
         doctoresVO1.setNumero_tarjeta_profesional(doctoresVO.getNumero_tarjeta_profesional());
         doctoresVO1.setId_especialidad(doctoresVO.getId_especialidad());
