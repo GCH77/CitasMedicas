@@ -1,8 +1,8 @@
-<section class="hero is-primary is-bold">
+<section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Agenda de doctores - Disponibilidad
+        Crear nueva agenda - Doctores
       </h1>
       <h2 class="subtitle">
         Ajusta tu horario segun tu disponibilidad
@@ -29,7 +29,7 @@
             <div class="control has-icons-left">
               <div class="select is-primary">
                 <select name="tipoDocumento" [(ngModel)]="tipoDocumento" required>
-                  <option *ngFor="let tipo of tiposDocumentosList | async" [value]="tipo.id">{{ tipo.tipo }}</option>
+                  <option *ngFor="let tipo of (tiposDocumentosList$ | async)" [value]="tipo.id">{{ tipo.tipo }}</option>
                 </select>
               </div>
               <span class="icon is-left">
@@ -54,7 +54,7 @@
       </div>
     </form>
     
-    <section class="section" *ngIf="doctor == ''">
+    <section class="section" *ngIf="doctor === null">
         <div class="card">
           <div class="card-content">
             <div class="media">

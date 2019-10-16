@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Persona } from '../models/Persona';
+import { HttpClient } from '@angular/common/http';
+import { Agenda } from '../models/Agenda';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersonaService {
+export class AgendaService {
   private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
-  savePersona(persona: Persona): Observable<Object>{
-    return this.http.post(`${this.baseUrl}/personas`, persona);
+  saveAgendaDoctor(agenda: Agenda): Observable<Agenda>{
+    return this.http.post<Agenda>(`${this.baseUrl}/agenda`, agenda);
   }
-
 }

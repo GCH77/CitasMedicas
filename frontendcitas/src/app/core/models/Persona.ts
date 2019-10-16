@@ -1,4 +1,4 @@
-import { TipoDocumento } from './tipo-documento';
+import { TipoDocumento } from './TipoDocumento';
 
 export class Persona {
   id: number;
@@ -8,5 +8,5 @@ export class Persona {
   nombre: string;
   numero_documento: string;
   telefono: string;
-  id_tipo_documento: TipoDocumento;
+  id_tipo_documento: TipoDocumento = new TipoDocumento();
 }

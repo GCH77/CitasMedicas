@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="assets/logo.png" alt="Medicenter">
+            <img src="assets/logo.png" alt="Medicenter" routerLink="/home">
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
             <span></span>
@@ -14,14 +14,25 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item" routerLink="home" routerLinkActive="is-active">
+            <a class="navbar-item" routerLink="/home" routerLinkActive="is-active">
               Inicio
-              
             </a>
-            <a class="navbar-item" routerLink="agenda" routerLinkActive="is-active">
-              Agenda
-            </a>
-            <a class="navbar-item" routerLink="doctores" routerLinkActive="is-active">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item">
+                Agenda
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item" routerLink="/admin/agenda/crear" routerLinkActive="is-active">
+                  Crear
+                </a>
+                <a class="navbar-item" routerLink="/admin/agenda/listar" routerLinkActive="is-active">
+                  Listar
+                </a>
+              </div>
+            </div>
+            
+            <a class="navbar-item" routerLink="/admin/doctores" routerLinkActive="is-active">
               Doctores
             </a>
             <span class="navbar-item">

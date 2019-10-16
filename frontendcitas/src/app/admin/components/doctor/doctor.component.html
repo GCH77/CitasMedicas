@@ -1,4 +1,4 @@
-<section class="hero is-dark is-bold">
+<section class="hero is-primary">
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
@@ -20,9 +20,10 @@
 							<label class="label">Tipo de Documento:</label>
 							<div class="control has-icons-left">
 								<div class="select is-primary">
-									<select name="tipoDocumento" [(ngModel)]="tipoDocumento.id" required>
-										<option *ngFor="let tipo of tiposDocumentosList | async" [value]="tipo.id">
-											{{ tipo.tipo }}</option>
+									<select name="tipoDocumento" [(ngModel)]="personaDoctor.id_tipo_documento.id" ngModel required>
+										<option *ngFor="let tipo of (tiposDocumentosList$ | async)" [value]="tipo.id">
+											{{ tipo.tipo }}
+										</option>
 									</select>
 								</div>
 								<span class="icon is-left">
@@ -93,9 +94,10 @@
 								<label class="label">Especialidad</label>
 								<div class="control has-icons-left">
 									<div class="select is-primary">
-										<select name="especialidadDoctor" [(ngModel)]="doctor.id_especialidad" required>
-											<option *ngFor="let especialidad of especialidadList | async" [value]="especialidad.id">
-												{{ especialidad.nombre }}</option>
+										<select name="especialidadDoctor" [(ngModel)]="doctor.id_especialidad.id" required>
+											<option *ngFor="let especialidad of (especialidadList$ | async)" [value]="especialidad.id">
+												{{ especialidad.nombre }}
+											</option>
 										</select>
 									</div>
 									<span class="icon is-left">

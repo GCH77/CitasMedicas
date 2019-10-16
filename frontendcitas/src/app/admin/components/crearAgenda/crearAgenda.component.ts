@@ -1,17 +1,19 @@
-import { TipoDocumentoService } from './../services/tipo-documento.service';
 import { Component, OnInit } from '@angular/core';
+import { TipoDocumentoService } from '../../../core/services/tipo-documento.service';
 import { faFingerprint, faSearch, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { DoctorService } from '../services/doctor.service';
-import { Agenda } from '../models/Agenda';
-import { AgendaService } from '../services/agenda.service';
-import { Doctor } from '../models/Doctor';
+import { DoctorService } from '../../../core/services/doctor.service';
+import { Agenda } from './../../../core/models/Agenda';
+import { AgendaService } from '../../../core/services/agenda.service';
+import { Doctor } from '../../../core/models/Doctor';
+import { TipoDocumento } from 'src/app/core/models/TipoDocumento';
+
 @Component({
-  selector: 'app-agenda',
-  templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.scss']
+  selector: 'app-crearAgenda',
+  templateUrl: './crearAgenda.component.html',
+  styleUrls: ['./crearAgenda.component.css']
 })
-export class AgendaComponent implements OnInit {
+export class CrearAgendaComponent implements OnInit {
   //Icons
   faFingerprint = faFingerprint;
   faSearch = faSearch;
@@ -26,7 +28,7 @@ export class AgendaComponent implements OnInit {
   showBar: boolean;
   showSuccess: boolean;
   showDanger: boolean;
-  tiposDocumentosList: Observable<any>;
+  tiposDocumentosList$: Observable<TipoDocumento[]>;
   doctor: Doctor;
   
   constructor(
@@ -44,48 +46,51 @@ export class AgendaComponent implements OnInit {
   }
 
   searchDoctor() {
-    // console.log("GET");
-    this.showBar = !this.showBar;
+    this.dismissShowBar(true);
     setTimeout(() => {
       this.doctorService.getDatosByIdentificacion(this.tipoDocumento, this.numeroDocumento)
         .subscribe(res => {
-          this.doctor = res ? res : '';
-          this.showBar = !this.showBar;
+          this.doctor = res ? res : null;
+          this.dismissShowBar(false);
         });
     }, 800);
-    // console.log(this.doctor);
   }
 
   saveDisponibilidad(){
+    this.dismissShowBar(true);
     this.agendaDoctor.id_doctor = this.doctor;
     this.agendaService.saveAgendaDoctor(this.agendaDoctor)
       .subscribe(res => {
         if (res.hasOwnProperty('id')) {
           this.resetValues();
-          this.dismissSuccess();
+          this.dismissSuccess(true);
           setTimeout(() => {
-            this.dismissSuccess();
+            this.dismissSuccess(false);
           }, 2000);
         }else{
           this.resetValues();
-          this.dismissDanger();
+          this.dismissDanger(true);
           setTimeout(() => {
-            this.dismissDanger();
+            this.dismissDanger(false);
           }, 2000);
         }
       });
   }
 
   getTiposDocumentos() {
-    this.tiposDocumentosList = this.tiposDocumentosService.getTiposDocumentos();
+    this.tiposDocumentosList$ = this.tiposDocumentosService.getTiposDocumentos();
   }
 
-  dismissSuccess(){
-    this.showSuccess = !this.showSuccess;
+  dismissSuccess(state: boolean) {
+    this.showSuccess = state;
   }
 
-  dismissDanger(){
-    this.showDanger = !this.showDanger;
+  dismissDanger(state: boolean) {
+    this.showDanger = state;
+  }
+
+  dismissShowBar(state: boolean) {
+    this.showBar = state;
   }
 
   resetValues(){
