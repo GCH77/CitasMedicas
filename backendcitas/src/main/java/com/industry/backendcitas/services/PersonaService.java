@@ -33,4 +33,8 @@ public class PersonaService {
     public Persona findPersonaByIdentificacion(int tipo, String identificacion){
         return this.personaRepository.findPersonaByIdentificacion(tipo, identificacion);
     }
+
+    public Persona findById(int idPersona) {
+        return this.personaRepository.findById(idPersona).get();
+    }
 }

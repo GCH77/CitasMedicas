@@ -1,6 +1,7 @@
 package com.industry.backendcitas.controllers;
 
 import com.industry.backendcitas.VO.PersonaVO;
+import com.industry.backendcitas.models.Doctores;
 import com.industry.backendcitas.models.Persona;
 import com.industry.backendcitas.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
