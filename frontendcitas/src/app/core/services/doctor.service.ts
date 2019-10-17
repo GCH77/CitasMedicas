@@ -19,7 +19,7 @@ export class DoctorService {
 
   async saveDoctor(personaDoctor: PersonaDoctor): Promise<PersonaDoctor> {
     try {
-      let response = await this.http.post<PersonaDoctor>(`${this.baseUrl}/doctores`, personaDoctor).toPromise();
+      let response = await this.http.post<PersonaDoctor>(`${this.baseUrl}/doctor`, personaDoctor).toPromise();
       return response;
     } catch (error) {
       console.log('Error doctor.service-saveDoctor', error);

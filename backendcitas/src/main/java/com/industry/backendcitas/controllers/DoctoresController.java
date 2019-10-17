@@ -31,7 +31,7 @@ public class DoctoresController {
         return doctoresService.findByIdentificacion(Integer.parseInt(tipo), identificacion);
     }
 
-    @PostMapping("/doctores")
+    @PostMapping("/doctor")
     public ResponseEntity<Doctores> createDoctor(@RequestBody PersonaDoctorVO personaDoctorVO) {
         Persona persona = new Persona();
         persona.setNombre(personaDoctorVO.getPersona().getNombre());
