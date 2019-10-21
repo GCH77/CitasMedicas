@@ -10,3 +10,140 @@
     </div>
   </div>
 </section>
+<progress *ngIf="showBar" class="progress is-small is-info" max="100">30%</progress>
+<section class="section">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><abbr title="Position">#</abbr></th>
+          <th><abbr title="Nombre y apellidos">Nombre y apellidos</abbr></th>
+          <th><abbr title="Especialidad">Especialidad</abbr></th>
+          <th><abbr title="Duracion cita">Duracion cita</abbr></th>
+          <th><abbr title="Fecha inicio">Fecha inicio</abbr></th>
+          <th><abbr title="Fecha fin">Fecha fin</abbr></th>
+          <th><abbr title="Opciones">Opciones</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agenda of listAgendas$">
+          <th>{{ agenda.id }}</th>
+          <td>{{ agenda.id_doctor.id_persona.nombre }} {{ agenda.id_doctor.id_persona.apellido }}</td>         
+          <td>{{ agenda.id_doctor.id_especialidad.nombre }}</td>
+          <td>{{ agenda.duracion_cita }}</td>
+          <td>{{ agenda.fecha_inicio }}</td>
+          <td>{{ agenda.fecha_fin }}</td>
+          <td>
+            <a class="button is-info is-outlined" id="editButton" (click)="showModal(agenda, '#myModal')">
+              <span class="icon is-small">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </span>
+            </a>
+            <a class="button is-danger is-outlined" (click)="showModal(agenda, '#deleteModal')">
+                <span class="icon is-small">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </span>
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- Modal - Edit -->
+<div class="modal" data-backdrop="false" id="myModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Editando agenda</p>
+      <button class="delete" aria-label="close" (click)="dismissModal('#myModal')"></button>
+    </header>
+    <form (ngSubmit)="updateAgenda()" #FormUpdateAgenda="ngForm" method="POST" *ngIf="toEdit">
+      <section class="modal-card-body">
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <label class="label">Fecha de Inicio</label>
+              <div class="control">
+                <input class="input" [(ngModel)]="toEdit.fecha_inicio" name="fecha_inicio" type="date" placeholder="dd/mm/yyyy" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Fecha de Cierre</label>
+              <div class="control">
+                <input class="input" [(ngModel)]="toEdit.fecha_fin" name="fecha_fin" type="date" placeholder="dd/mm/yyyy" required>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+          
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <label class="label">Duracion de citas</label>
+              <div class="control">
+                <input id="rangeTime" class="slider is-fullwidth is-info" [(ngModel)]="toEdit.duracion_cita" name="duracion_cita" step="1" min="1" max="60" type="range">
+                <div class="tags has-addons">
+                  <span class="tag">Minutos</span>
+                  <span class="tag is-primary">{{ toEdit.duracion_cita }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="submit" [disabled]="!FormUpdateAgenda.form.valid">
+          <fa-icon [icon]="faSave"></fa-icon>Guardar cambios
+        </button>
+        <button class="button" type="button" (click)="dismissModal('#myModal')">Cancelar</button>
+      </footer>
+    </form>
+  </div>
+</div>
+
+<!-- Modal - Delete -->
+<div class="modal" data-backdrop="false" id="deleteModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Confirmacion de eliminacion</p>
+      <button class="delete" aria-label="close" (click)="dismissModal('#deleteModal')"></button>
+    </header>
+    <section class="modal-card-body">
+      <article class="message is-warning">
+        <div class="message-body">
+          <b>Confirme que esta seguro de eliminar la siguiente agenda:</b>
+        </div>
+      </article>
+      <div class="card" *ngIf="toEdit">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="assets/user.png" alt="Usuario">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4"><b>Agenda de:</b> Dr. {{ toEdit.id_doctor.id_persona.nombre }} {{ toEdit.id_doctor.id_persona.apellido }}</p>
+              <p class="subtitle is-6">
+                {{ toEdit.id_doctor.id_especialidad.nombre }}
+              </p>
+              <p class="subtitle is-6">
+                <b>Informacion de la agenda:</b><br>
+                Duracion: {{ toEdit.duracion_cita }} <br>
+                Fecha inicio: {{ toEdit.fecha_inicio }} <br>
+                Fecha fin: {{ toEdit.fecha_fin }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" (click)="deleteAgenda(toEdit.id)">Eliminar</button>
+      <button class="button" (click)="dismissModal('#deleteModal')">Cancelar</button>
+    </footer>
+  </div>
+</div>

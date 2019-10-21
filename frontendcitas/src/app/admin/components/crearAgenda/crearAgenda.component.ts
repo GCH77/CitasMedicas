@@ -57,7 +57,6 @@ export class CrearAgendaComponent implements OnInit {
   }
 
   saveDisponibilidad(){
-    this.dismissShowBar(true);
     this.agendaDoctor.id_doctor = this.doctor;
     this.agendaService.saveAgendaDoctor(this.agendaDoctor)
       .subscribe(res => {

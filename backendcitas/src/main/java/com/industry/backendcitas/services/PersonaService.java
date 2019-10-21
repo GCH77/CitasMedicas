@@ -22,10 +22,6 @@ public class PersonaService {
         return this.personaRepository.save(persona);
     }
 
-    public Persona updatePersona(Persona persona) {
-        return this.personaRepository.save(persona);
-    }
-
     public void deletePersona(int idPersona) {
         this.personaRepository.deleteById(idPersona);
     }

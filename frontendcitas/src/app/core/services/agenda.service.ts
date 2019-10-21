@@ -12,7 +12,19 @@ export class AgendaService {
 
   constructor(private http: HttpClient) { }
 
-  saveAgendaDoctor(agenda: Agenda): Observable<Agenda>{
+  getAgendasDoctores(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.baseUrl}/agendas`);
+  }
+
+  saveAgendaDoctor(agenda: Agenda): Observable<Agenda> {
     return this.http.post<Agenda>(`${this.baseUrl}/agenda`, agenda);
+  }
+
+  updateAgenda(idAgenda: number, agenda: Agenda): Observable<Agenda> {
+    return this.http.put<Agenda>(`${this.baseUrl}/agenda/${idAgenda}`, agenda);
+  }
+
+  deleteAgenda(idAgenda: number) {
+    return this.http.delete(`${this.baseUrl}/agenda/${idAgenda}`);
   }
 }
