@@ -1,0 +1,319 @@
+<section class="section cards">
+  <div class="container">
+    <div class="columns is-multiline is-centered">
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title is-centered"> Paso 1 </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <form #createAppointmentForm="ngForm" method="POST">
+                <div class="field">
+                  <label for="fecha_cita" class="label">Seleccione una fecha para la cita</label>
+                  <div class="control">
+                    <input type="date" name="fecha_cita" id="fecha_cita">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title is-centered"> Paso 2 </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div class="field">
+                <label class="label">Seleccione el especialista para el que necesita la cita</label>
+                <div class="field-body">
+                  <div class="field">
+                    <label class="label">Doctor:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select>
+                          <option>Select dropdown</option>
+                          <option>With options</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title is-centered"> Paso 3 </p>
+          </header>
+          <div class="card-content is-centered">
+            <div class="content">
+              <div class="field">
+                <label class="label">Seleccione el horario de su cita</label>
+                <div class="field-body">
+                  <div class="field">
+                    <label class="label">Horarios disponibles:</label>
+                    <div class="control">
+                      <div class="select is-multiple">
+                        <select multiple>
+                          <option value="1">08:00</option>
+                          <option value="2">08:30</option>
+                          <option value="3">09:00</option>
+                          <option value="4">09:30</option>
+                          <option value="5">10:00</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title is-centered"> Paso 4 </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div class="field is-grouped">
+                <div class="field-label is-normal">
+                  <label class="label">Nombres:</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="nombre" id="nombre" type="text" placeholder="Nombres" autofocus data-validate="require">
+                    </div>
+                  </div>
+                  <div class="field-label is-normal">
+                    <label class="label">Apellidos:</label>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="apellido" id="apellido" type="text" placeholder="Apellidos" data-validate="require">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="field is-grouped">
+                <div class="field-label is-normal">
+                  <label class="label">Email:</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="email" id="email" type="email" placeholder="Email" data-validate="require">
+                    </div>
+                  </div>
+                  <div class="field-label is-normal">
+                    <label class="label">Telefono:</label>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="telefono" id="telefono" type="tel" placeholder="Telefono" data-validate="require">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="field is-grouped">
+                <div class="field-label is-normal">
+                  <label class="label">Fecha de nacimiento</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-validate="require">
+                    </div>
+                  </div>
+                  <div class="field-label">
+                    <label class="label">Tipo de documento:</label>
+                  </div>
+                  <div class="control">
+                    <div class="select">
+                      <select>
+                        <option>CC</option>
+                        <option>TI</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field-label is-normal">
+                    <label class="label">Numero de documento:</label>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" name="numero_documento" id="numero_documento" type="text" placeholder="Numero de documento" data-validate="require">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="steps" id="stepsDemo">
+    <div class="step-item is-active is-success">
+      <div class="step-marker">1</div>
+      <div class="step-details">
+        <p class="step-title">Account</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">2</div>
+      <div class="step-details">
+        <p class="step-title">Profile</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">3</div>
+      <div class="step-details">
+        <p class="step-title">Social</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">4</div>
+      <div class="step-details">
+        <p class="step-title">Finish</p>
+      </div>
+    </div>
+    <div class="steps-content">
+      <div class="step-content has-text-centered is-active">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Username</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="username" id="username" type="text" placeholder="Username" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Password</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="password" name="password" id="password" placeholder="Password" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Confirm password</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="password" name="password_confirm" id="password_confirm" placeholder="Confirm password" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-content has-text-centered">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Firstname</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="firstname" id="firstname" type="text" placeholder="Firstname" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Last name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="text" name="lastname" id="lastname" placeholder="Last name" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="email" name="email" id="email" placeholder="Email" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-content has-text-centered">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Facebook account</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="facebook" id="facebook" type="text" placeholder="Facebook account url" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Twitter account</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="twitter" id="twitter" type="text" placeholder="Twitter account url" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-content has-text-centered">
+        <h1 class="title is-4">Your account is now created!</h1>
+      </div>
+    </div>
+    <div class="steps-actions">
+      <div class="steps-action">
+        <a href="#" data-nav="previous" class="button is-light">Previous</a>
+      </div>
+      <div class="steps-action">
+        <a href="#" data-nav="next" class="button is-light">Next</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script> 
+  // var bulmaSteps = require("bulma-steps")
+  bulmaSteps.attach();
+  var calendars = bulmaCalendar.attach('[type="date"]');
+</script>

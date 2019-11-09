@@ -28,11 +28,17 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
+              "node_modules/bulma-steps/dist/css/bulma-steps.min.css",
               "node_modules/bulma-slider/dist/css/bulma-slider.min.css",
               "node_modules/bulma/css/bulma.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js",
+              "node_modules/bulma-steps/dist/js/bulma-steps.min.js",
+              "node_modules/bulma-steps/src/js/defaultOptions.js"
+            ]
           },
           "configurations": {
             "production": {
