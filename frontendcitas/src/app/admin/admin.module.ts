@@ -7,6 +7,8 @@ import { AgendaComponent } from './components/agenda/agenda.component';
 import { CrearAgendaComponent } from './components/crearAgenda/crearAgenda.component';
 import { ListadoAgendasComponent } from './components/listadoAgendas/listadoAgendas.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { DoctorComponent } from './components/doctor/doctor.component';
     AdminRoutingModule,
     FormsModule,
     FontAwesomeModule,
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

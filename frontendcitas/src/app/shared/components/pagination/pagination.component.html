@@ -1,0 +1,17 @@
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <div class="field is-horizontal pagination-previous">
+    <div class="field-label">
+      <label class="label">Items por pagina:</label>
+    </div>
+    <div class="control">
+      <input class="input" type="text" placeholder="Items por pagina" [(ngModel)]="size" (keyup.enter)="onEnter()">
+    </div>
+  </div>
+  <button [disabled]="disabledPrevious()" class="button pagination-previous" (click)="previousMethod()">Previous</button>
+  <button [disabled]="disabledNext()" class="button pagination-next" (click)="nextMethod()">Next page</button>
+  <ul class="pagination-list">
+    <li *ngFor="let page of pages; index as i">
+      <a [class.is-current]="i === linkActive" class="pagination-link" (click)="changePage(i)">{{ page }}</a>
+    </li>
+  </ul>
+</nav>

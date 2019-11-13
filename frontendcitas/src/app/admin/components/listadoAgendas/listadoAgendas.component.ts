@@ -20,6 +20,9 @@ export class ListadoAgendasComponent implements OnInit {
   listAgendas$: Agenda[];
   toEdit: Agenda;
   showBar: boolean;
+  sizeItemsPerPage: number;
+  totalElements: number;
+  totalPages: number;
 
   constructor(private agendaService: AgendaService) { }
 
@@ -59,10 +62,24 @@ export class ListadoAgendasComponent implements OnInit {
     let mdl = new Modal(modal);
     mdl.close();
   }
+  
+  getCurrentPage($event) {
+    console.log("Change...!", $event);
+    this.getAgendas($event, this.sizeItemsPerPage);
+  }
 
-  getAgendas() {
-    this.agendaService.getAgendasDoctores().subscribe(data => {
-      this.listAgendas$ = data;
+  getSize($event) {
+    console.log("The size is: ", $event);
+    this.sizeItemsPerPage = $event;
+    this.getAgendas(0, this.sizeItemsPerPage);
+  }
+
+  getAgendas(pageNumber: number = 0, sizePerPage: number = 1) {
+    this.agendaService.getAgendasDoctores(pageNumber, sizePerPage).subscribe(data => {
+      this.listAgendas$ = data.content;
+      this.sizeItemsPerPage = data.size;
+      this.totalElements = data.totalElements;
+      this.totalPages = data.totalPages;
     });
   }
 

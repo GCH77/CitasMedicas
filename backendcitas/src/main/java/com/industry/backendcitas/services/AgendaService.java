@@ -2,6 +2,9 @@ package com.industry.backendcitas.services;
 
 import com.industry.backendcitas.models.Agenda;
 import com.industry.backendcitas.repository.AgendaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +18,15 @@ public class AgendaService {
         this.agendaRepository = agendaRepository;
     }
 
-    public List<Agenda> readAgendas() {
-        return this.agendaRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+    public Page<Agenda> readAgendas(Pageable pageable) {
+//        return this.agendaRepository.findAll(pageable.getSort().and(Sort.by("id").descending()));
+        return this.agendaRepository.findAll(
+                PageRequest.of(
+                        pageable.getPageNumber(),
+                        pageable.getPageSize(),
+                        Sort.by("id").ascending()
+                )
+        );
     }
 
     public Agenda createAgenda(Agenda agenda) {

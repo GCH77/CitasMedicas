@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
 import { LayoutComponent } from './layout/layout.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
    declarations: [
@@ -21,6 +22,7 @@ import { LayoutComponent } from './layout/layout.component';
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
+      NgxPaginationModule,
       CoreModule,
       SharedModule,
       AdminModule
