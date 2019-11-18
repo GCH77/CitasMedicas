@@ -13,7 +13,7 @@
 <progress *ngIf="showBar" class="progress is-small is-info" max="100">30%</progress>
 <section class="section">
   <div class="container">
-    <table class="table">
+    <table class="table is-fullwidth">
       <thead>
         <tr>
           <th><abbr title="Position">#</abbr></th>
@@ -48,8 +48,18 @@
         </tr>
       </tbody>
     </table>
+    <app-pagination
+      *ngIf="totalPages"
+      [size]="sizeItemsPerPage"
+      [numberOfElements]="totalElements" 
+      [totalPages]="totalPages"
+      (currentPage)="getCurrentPage($event)"
+      (sizeModified)="getSize($event)"
+    ></app-pagination>
   </div>
 </section>
+<div class="container">
+</div>
 <!-- Modal - Edit -->
 <div class="modal" data-backdrop="false" id="myModal">
   <div class="modal-background"></div>

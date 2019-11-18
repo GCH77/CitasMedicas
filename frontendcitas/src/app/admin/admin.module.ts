@@ -10,6 +10,8 @@ import { DoctorComponent } from './components/doctor/doctor.component';
 import { CitaComponent } from './components/cita/cita.component';
 import { CrearCitaComponent } from './components/crearCita/crearCita.component';
 import { ReasignarCitaComponent } from './components/reasignarCita/reasignarCita.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ReasignarCitaComponent } from './components/reasignarCita/reasignarCita
     AdminRoutingModule,
     FormsModule,
     FontAwesomeModule,
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

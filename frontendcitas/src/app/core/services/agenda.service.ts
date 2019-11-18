@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Agenda } from '../models/Agenda';
 import { Observable } from 'rxjs';
+import { Pagination } from '../models/Pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class AgendaService {
 
   constructor(private http: HttpClient) { }
 
-  getAgendasDoctores(): Observable<Agenda[]> {
-    return this.http.get<Agenda[]>(`${this.baseUrl}/agendas`);
+  getAgendasDoctores(pageNumber: number, sizePerPage: number): Observable<Pagination> {
+    return this.http.get<Pagination>(`${this.baseUrl}/agendas?page=${pageNumber}&size=${sizePerPage}`);
   }
 
   saveAgendaDoctor(agenda: Agenda): Observable<Agenda> {

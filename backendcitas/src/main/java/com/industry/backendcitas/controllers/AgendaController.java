@@ -4,6 +4,8 @@ import com.industry.backendcitas.VO.AgendaVO;
 import com.industry.backendcitas.models.Agenda;
 import com.industry.backendcitas.services.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +19,8 @@ public class AgendaController {
     private AgendaService agendaService;
 
     @GetMapping("/agendas")
-    public List<Agenda> getAgendasDoctor(){
-        return agendaService.readAgendas();
+    public Page<Agenda> getAgendasDoctor(Pageable pageable){
+        return agendaService.readAgendas(pageable);
     }
 
     @PostMapping("/agenda")
