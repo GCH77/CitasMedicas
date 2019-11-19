@@ -29,10 +29,11 @@ public class CitasController {
     @Autowired
     private PersonaService personaService;
 
+    @Autowired
+    private EmailService emailService;
+
     @PostMapping("/cita")
     public ResponseEntity<Cita> saveCita(@RequestBody CitaVO citaVO){
-        System.out.println("_______---------------_____________");
-        System.out.println(citaVO);
         Doctores doctores = doctoresService.findById(citaVO.getId_doctor().getId());
 
         TipoCitas tipoCitas = tipoCitasService.findById(citaVO.getTipo_cita().getId());
@@ -53,6 +54,22 @@ public class CitasController {
         cita.setTipo_cita(tipoCitas);
         cita.setId_doctor(doctores);
         cita.setId_persona(persona);
+
+        sendNewUserEmailCita(cita);
+
         return new ResponseEntity<>(citaService.createCita(cita), HttpStatus.CREATED);
+    }
+
+    private void sendNewUserEmailCita(Cita citaVO) {
+        String to = citaVO.getId_persona().getEmail();
+        String from = "medicenter.com <auto-confirm@medicenter.com>";
+        String subject = " Cita agenda - Recordatorio";
+        String body = "Buen dia "+ citaVO.getId_persona().getNombre() + " "+ citaVO.getId_persona().getApellido() + "\r\n" + "\r\n"
+                + "Queremos confirmarte que tienes una cita agendada para el dia: "+citaVO.getFecha_cita()+" a las: "+citaVO.getHora_cita() +
+                " con el Dr. "+ citaVO.getId_doctor().getId_persona().getNombre() + " " + citaVO.getId_doctor().getId_persona().getApellido() +
+                " de tipo: " + citaVO.getTipo_cita().getTipo() + " - " + citaVO.getTipo_cita().getDescripcion() + "\r\n" + "\r\n" +
+                "Por favor, estar 10 minutos antes de la consulta." + "\r\n" + "\r\n" +
+                "Gracias por usar nuestros servicios";
+        emailService.sendSimpleMessage(to, from, subject, body);
     }
 }
