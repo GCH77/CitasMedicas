@@ -1,0 +1,41 @@
+<form (ngSubmit)="siguienteSendOne()" #formStepOne="ngForm" method="POST">
+  <div class="box">
+    <div class="field is-horizontal is-grouped is-grouped-centered">
+      <div class="field-label is-normal">
+        <label class="label">Tipo de cita</label>
+      </div>
+      <div class="field-body">
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select [(ngModel)]="tipo" name="tipo" required>
+                <option *ngFor="let tipo of tiposCitas" [value]="tipo.id">
+                  {{ tipo.descripcion }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fecha -->
+        <div class="field-label is-normal">
+          <label class="label">Fecha cita</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input [(ngModel)]="fechaCita" class="input" type="date" name="fechaCita" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button class="button is-primary" [disabled]="!formStepOne.form.valid">
+          Siguiente
+        </button>
+      </p>
+    </div>
+  </div>
+</form>

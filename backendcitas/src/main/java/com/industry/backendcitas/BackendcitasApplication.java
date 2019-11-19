@@ -48,10 +48,11 @@ public class BackendcitasApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         List<TipoCitas> tipoCitas = new ArrayList<>();
+        tipoCitas.add(new TipoCitas("CMP", "Especialista - Dermatologia"));
+        tipoCitas.add(new TipoCitas("AU", "Especialidad - Otorrino"));
+        tipoCitas.add(new TipoCitas("CME", "Especialidad - Neurologia"));
+        tipoCitas.add(new TipoCitas("CMEN", "Especialidad - Cardiologia"));
         tipoCitas.add(new TipoCitas("MG", "Medicina general"));
-        tipoCitas.add(new TipoCitas("CMP", "Consulta medica prioritaria"));
-        tipoCitas.add(new TipoCitas("AU", "Atencion de urgencias"));
-        tipoCitas.add(new TipoCitas("CME", "Consulta medica especializada"));
 
         for (TipoCitas tipo : tipoCitas) {
             tipoCitasService.createTipoCita(tipo);
@@ -75,6 +76,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         personas.add(new Persona("Carlos Humberto", "Valderrama", "pibe@email.com", "310250875", LocalDate.of(1988, 10, 20), documentos.get(0), "1118545888-2"));
         personas.add(new Persona("Pablo", "Escobar", "elpatron@email.com", "310250875", LocalDate.of(1990, 5, 25), documentos.get(0), "1118545888-3"));
         personas.add(new Persona("Paciente", "Ejemplo", "email@email.com", "320250071", LocalDate.of(1960, 5, 25), documentos.get(0), "1118215808-4"));
+        personas.add(new Persona("Christian", "Peñaloza", "crhis@email.com", "30058214", LocalDate.of(1974, 2, 21), documentos.get(0), "1118215808-5"));
 
         for (Persona persona : personas) {
             personaService.createPersona(persona);
@@ -87,6 +89,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         especialidades.add(new Especialidad("Otorrinolaringología", "Encargado de ateneder el cuidado del oído, naríz y garganta"));
         especialidades.add(new Especialidad("Neurología", "Encargado de atender enfermedades del sistema nervioso"));
         especialidades.add(new Especialidad("Cardiologìa", "Encargado de atender enfermedades del corazón"));
+        especialidades.add(new Especialidad("Ninguna", "Sin especialidad"));
 
         for (Especialidad especialidad : especialidades) {
             especialidadService.createEspecialidad(especialidad);
@@ -99,6 +102,7 @@ public class BackendcitasApplication implements CommandLineRunner {
         doctores.add(new Doctores(6542140, especialidades.get(1), personas.get(1)));
         doctores.add(new Doctores(5546545, especialidades.get(2), personas.get(3)));
         doctores.add(new Doctores(6258844, especialidades.get(3), personas.get(2)));
+        doctores.add(new Doctores(6259982, especialidades.get(4), personas.get(5)));
 
         for (Doctores doctor : doctores) {
             doctoresService.createDoctor(doctor);
@@ -112,12 +116,15 @@ public class BackendcitasApplication implements CommandLineRunner {
         agendaService.createAgenda(agenda1);
         Agenda agenda2 = new Agenda(LocalDate.of(2019, 9, 30), LocalDate.of(2019, 10, 23), 30, doctores.get(2));
         agendaService.createAgenda(agenda2);
+        Agenda agenda3 = new Agenda(LocalDate.of(2019, 9, 30), LocalDate.of(2019, 10, 21), 30, doctores.get(4));
+        agendaService.createAgenda(agenda3);
         LOG.info("guardando agenda en DB : {}", agenda.toString());
         LOG.info("guardando agenda1 en DB : {}", agenda1.toString());
         LOG.info("guardando agenda2 en DB : {}", agenda2.toString());
+        LOG.info("guardando agenda3 en DB : {}", agenda3.toString());
 
         //--
-        Cita cita = new Cita(LocalDate.of(2019,10,1), "Cita con especialista en Dermatología", LocalTime.of(8,30), doctores.get(0), personas.get(4));
+        Cita cita = new Cita(LocalDate.of(2019,10,1), tipoCitas.get(1), "07:00 AM - 07:30 AM", doctores.get(0), personas.get(4));
         citaService.createCita(cita);
         LOG.info("Guardando Cita en DB : {}", cita.toString());
     }

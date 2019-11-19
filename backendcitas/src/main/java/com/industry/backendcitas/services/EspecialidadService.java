@@ -29,4 +29,8 @@ public class EspecialidadService {
     public void deleteEspecilidad(int idEspecialidad) {
         this.especialidadRepository.deleteById(idEspecialidad);
     }
+
+    public Especialidad findById(int id){
+        return this.especialidadRepository.findById(id).get();
+    }
 }

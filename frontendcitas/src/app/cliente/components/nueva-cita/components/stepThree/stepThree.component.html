@@ -1,0 +1,119 @@
+<form (ngSubmit)="siguienteSendThree()" #formStepThree="ngForm" method="POST">
+  <div class="box">
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Nombres</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input [(ngModel)]="persona.nombre" name="nombre" class="input" type="text" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Apellidos</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input [(ngModel)]="persona.apellido" name="apellido" class="input" type="text" required>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Tipo documento</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select [(ngModel)]="persona.id_tipo_documento.id" name="tipoDocumento" required>
+                    <option *ngFor="let tipo of tipoDocumentosList" [value]="tipo.id">{{ tipo.tipo }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Numero documento</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input [(ngModel)]="persona.numero_documento" name="numero_documento" class="input" type="text" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Fecha nacimiento</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input [(ngModel)]="persona.fecha_nacimiento" name="fecha_nacimiento" class="input" type="date" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Correo electronico</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input [(ngModel)]="persona.email" name="email" class="input" type="email" placeholder="example@hotmail.com" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Telefono</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input [(ngModel)]="persona.telefono" name="telefono" class="input" type="text" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button (click)="cancelButton()" class="button is-light">
+          Cancel
+        </button>
+      </p>
+      <p class="control">
+        <button class="button is-primary" [disabled]="!formStepThree.form.valid">
+          Siguiente
+        </button>
+      </p>
+    </div>
+  </div>
+</form>

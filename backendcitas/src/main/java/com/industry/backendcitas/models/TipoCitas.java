@@ -2,6 +2,8 @@ package com.industry.backendcitas.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tipo_citas")
@@ -13,6 +15,13 @@ public class TipoCitas {
     private int id;
     private String tipo;
     private String descripcion;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "id_tipo_cita"
+    )
+    private Set<Cita> citas = new HashSet<>();
 
     public TipoCitas() {
     }
