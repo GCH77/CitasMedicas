@@ -1,0 +1,63 @@
+<form (ngSubmit)="siguienteSendTwo()" #formStepTwo="ngForm" method="POST">
+  <div class="box">
+    <article class="message is-warning" *ngIf="!doctoresList.length">
+      <div class="message-body">
+        <b>No hay doctores disponibles</b>
+      </div>
+    </article>
+    <div class="field is-horizontal" *ngIf="doctoresList.length">
+      <div class="field-body">
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Seleccione el doctor</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select [(ngModel)]="doctorCita" name="doctorCita" required (ngModelChange)="changeDoctor($event)">
+                    <option *ngFor="let doctor of doctoresList" [value]="doctor.id">{{ doctor.id_persona.nombre }} {{ doctor.id_persona.apellido }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <article class="message is-warning" *ngIf="!agendaDoctorDisponible && doctorCita">
+          <div class="message-body">
+            <b>Doctor sin agenda</b>
+          </div>
+        </article>
+        <div class="field is-horizontal" *ngIf="agendaDoctorDisponible">
+          <div class="field-label is-normal">
+            <label class="label">Hora de la cita</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select [(ngModel)]="horaCita" name="horaCita" required>
+                    <option *ngFor="let hora of horasCitaList">{{ hora }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button (click)="cancelButton()" class="button is-light">
+          Cancel
+        </button>
+      </p>
+      <p class="control">
+        <button class="button is-primary" [disabled]="!formStepTwo.form.valid">
+          Siguiente
+        </button>
+      </p>
+    </div>  
+  </div>
+</form>
+  

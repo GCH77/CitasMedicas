@@ -27,7 +27,7 @@ public class Doctores extends AuditModel{
             fetch = FetchType.LAZY,
             mappedBy = "id_doctor"
     )
-    private Set<Agenda> agenda = new HashSet<>();
+    private Set<Agenda> agendas = new HashSet<>();
 
     @OneToMany(
             cascade = CascadeType.ALL,

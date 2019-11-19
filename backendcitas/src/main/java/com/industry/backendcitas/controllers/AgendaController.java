@@ -2,7 +2,9 @@ package com.industry.backendcitas.controllers;
 
 import com.industry.backendcitas.VO.AgendaVO;
 import com.industry.backendcitas.models.Agenda;
+import com.industry.backendcitas.models.Doctores;
 import com.industry.backendcitas.services.AgendaService;
+import com.industry.backendcitas.services.DoctoresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +19,9 @@ import java.util.List;
 public class AgendaController {
     @Autowired
     private AgendaService agendaService;
+
+    @Autowired
+    private DoctoresService doctoresService;
 
     @GetMapping("/agendas")
     public Page<Agenda> getAgendasDoctor(Pageable pageable){
@@ -50,5 +55,11 @@ public class AgendaController {
     public ResponseEntity deleteAgenda(@PathVariable String id) {
         agendaService.deleteAgenda(Integer.parseInt(id));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/agenda/{idDoctor}")
+    public Agenda findByIdDoctor(@PathVariable String idDoctor){
+        Doctores doctor = doctoresService.findById(Integer.parseInt(idDoctor));
+        return agendaService.findByIdDoctor(doctor);
     }
 }

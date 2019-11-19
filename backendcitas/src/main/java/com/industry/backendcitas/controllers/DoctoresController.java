@@ -3,14 +3,18 @@ package com.industry.backendcitas.controllers;
 import com.industry.backendcitas.VO.DoctoresVO;
 import com.industry.backendcitas.VO.PersonaDoctorVO;
 import com.industry.backendcitas.models.Doctores;
+import com.industry.backendcitas.models.Especialidad;
 import com.industry.backendcitas.models.Persona;
 import com.industry.backendcitas.services.DoctoresService;
+import com.industry.backendcitas.services.EspecialidadService;
 import com.industry.backendcitas.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -20,6 +24,8 @@ public class DoctoresController {
     private DoctoresService doctoresService;
     @Autowired
     private PersonaService personaService;
+    @Autowired
+    private EspecialidadService especialidadService;
 
     @GetMapping("/doctores")
     public List<Doctores> getAllDoctores(){
@@ -51,5 +57,11 @@ public class DoctoresController {
         return new ResponseEntity<>(doctoresService.createDoctor(doctores), HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/doctores/{tipo}/{fecha}")
+    public List<Doctores> getDoctoresByEspecialidadDisponibilidad(@PathVariable String tipo, @PathVariable String fecha) {
+        Especialidad especialidad = especialidadService.findById(Integer.parseInt(tipo));
+        List<Doctores> docs = doctoresService.getDoctoresEspecialidadDisponibilidad(especialidad, LocalDate.parse(fecha));
+        System.out.println(docs.get(0));
+        return doctoresService.getDoctoresEspecialidadDisponibilidad(especialidad, LocalDate.parse(fecha));
+    }
 }

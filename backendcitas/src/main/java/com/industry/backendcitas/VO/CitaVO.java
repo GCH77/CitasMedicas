@@ -2,6 +2,7 @@ package com.industry.backendcitas.VO;
 
 import com.industry.backendcitas.models.Doctores;
 import com.industry.backendcitas.models.Persona;
+import com.industry.backendcitas.models.TipoCitas;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,20 +10,20 @@ import java.time.LocalTime;
 public class CitaVO {
     private int id;
     private LocalDate fecha_cita;
-    private String tipo_cita;
-    private LocalTime hora_cita;
+    private TipoCitas id_tipo_cita;
+    private String hora_cita;
     private Doctores id_doctor;
-    private Persona id_personaVO;
+    private Persona id_persona;
 
     public CitaVO() {
     }
 
-    public CitaVO(LocalDate fecha_cita, String tipo_cita, LocalTime hora_cita, Doctores id_doctor, Persona id_personaVO) {
+    public CitaVO(LocalDate fecha_cita, TipoCitas tipo_cita, String hora_cita, Doctores id_doctor, Persona id_persona) {
         this.fecha_cita = fecha_cita;
-        this.tipo_cita = tipo_cita;
+        this.id_tipo_cita = tipo_cita;
         this.hora_cita = hora_cita;
         this.id_doctor = id_doctor;
-        this.id_personaVO = id_personaVO;
+        this.id_persona = id_persona;
     }
 
     public int getId() {
@@ -41,19 +42,19 @@ public class CitaVO {
         this.fecha_cita = fecha_cita;
     }
 
-    public String getTipo_cita() {
-        return tipo_cita;
+    public TipoCitas getTipo_cita() {
+        return id_tipo_cita;
     }
 
-    public void setTipo_cita(String tipo_cita) {
-        this.tipo_cita = tipo_cita;
+    public void setTipo_cita(TipoCitas tipo_cita) {
+        this.id_tipo_cita = tipo_cita;
     }
 
-    public LocalTime getHora_cita() {
+    public String getHora_cita() {
         return hora_cita;
     }
 
-    public void setHora_cita(LocalTime hora_cita) {
+    public void setHora_cita(String hora_cita) {
         this.hora_cita = hora_cita;
     }
 
@@ -65,12 +66,12 @@ public class CitaVO {
         this.id_doctor = id_doctor;
     }
 
-    public Persona getId_personaVO() {
-        return id_personaVO;
+    public Persona getId_persona() {
+        return id_persona;
     }
 
-    public void setId_personaVO(Persona id_personaVO) {
-        this.id_personaVO = id_personaVO;
+    public void setId_persona(Persona id_persona) {
+        this.id_persona = id_persona;
     }
 
     @Override
@@ -78,10 +79,10 @@ public class CitaVO {
         return "CitaVO{" +
                 "id=" + id +
                 ", fecha_cita=" + fecha_cita +
-                ", tipo_cita='" + tipo_cita + '\'' +
+                ", tipo_cita='" + id_tipo_cita + '\'' +
                 ", hora_cita=" + hora_cita +
                 ", id_doctor=" + id_doctor +
-                ", id_persona=" + id_personaVO +
+                ", id_persona=" + id_persona +
                 '}';
     }
 }

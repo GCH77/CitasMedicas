@@ -29,4 +29,8 @@ public class TipoCitasService {
     public void deleteTipoCita(int id){
         this.tipoCitasRepository.deleteById(id);
     }
+
+    public TipoCitas findById(int id){
+        return this.tipoCitasRepository.findById(id).get();
+    }
 }

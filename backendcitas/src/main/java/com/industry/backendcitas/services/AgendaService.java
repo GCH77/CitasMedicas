@@ -1,6 +1,7 @@
 package com.industry.backendcitas.services;
 
 import com.industry.backendcitas.models.Agenda;
+import com.industry.backendcitas.models.Doctores;
 import com.industry.backendcitas.repository.AgendaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,5 +40,9 @@ public class AgendaService {
 
     public void deleteAgenda(int idAgenda) {
         this.agendaRepository.deleteById(idAgenda);
+    }
+
+    public Agenda findByIdDoctor(Doctores idDoctor){
+        return this.agendaRepository.findAgendaById_doctor(idDoctor);
     }
 }

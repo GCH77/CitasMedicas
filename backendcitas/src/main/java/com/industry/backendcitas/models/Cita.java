@@ -13,8 +13,12 @@ public class Cita extends AuditModel{
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
     private LocalDate fecha_cita;
-    private String tipo_cita;
-    private LocalTime hora_cita;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_cita", nullable = false)
+    private TipoCitas id_tipo_cita;
+
+    private String hora_cita;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_doctor", nullable = false)
@@ -27,9 +31,9 @@ public class Cita extends AuditModel{
     public Cita() {
     }
 
-    public Cita(LocalDate fecha_cita, String tipo_cita, LocalTime hora_cita, Doctores id_doctor, Persona id_persona) {
+    public Cita(LocalDate fecha_cita, TipoCitas tipo_cita, String hora_cita, Doctores id_doctor, Persona id_persona) {
         this.fecha_cita = fecha_cita;
-        this.tipo_cita = tipo_cita;
+        this.id_tipo_cita = tipo_cita;
         this.hora_cita = hora_cita;
         this.id_doctor = id_doctor;
         this.id_persona = id_persona;
@@ -51,19 +55,19 @@ public class Cita extends AuditModel{
         this.fecha_cita = fecha_cita;
     }
 
-    public String getTipo_cita() {
-        return tipo_cita;
+    public TipoCitas getTipo_cita() {
+        return id_tipo_cita;
     }
 
-    public void setTipo_cita(String tipo_cita) {
-        this.tipo_cita = tipo_cita;
+    public void setTipo_cita(TipoCitas tipo_cita) {
+        this.id_tipo_cita = tipo_cita;
     }
 
-    public LocalTime getHora_cita() {
+    public String getHora_cita() {
         return hora_cita;
     }
 
-    public void setHora_cita(LocalTime hora_cita) {
+    public void setHora_cita(String hora_cita) {
         this.hora_cita = hora_cita;
     }
 
@@ -88,7 +92,7 @@ public class Cita extends AuditModel{
         return "Cita{" +
                 "id=" + id +
                 ", fecha_cita=" + fecha_cita +
-                ", tipo_cita='" + tipo_cita + '\'' +
+                ", tipo_cita='" + id_tipo_cita + '\'' +
                 ", hora_cita=" + hora_cita +
                 ", id_doctor=" + id_doctor +
                 ", id_persona=" + id_persona +
